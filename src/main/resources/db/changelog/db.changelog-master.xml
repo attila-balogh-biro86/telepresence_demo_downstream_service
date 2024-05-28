@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+  <changeSet dbms="h2" author="abaloghbiro" id="1">
+    <createTable tableName="CLIENT">
+      <column name="ID" type="bigint" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="FIRST_NAME" type="varchar(100)">
+        <constraints nullable="true"></constraints>
+      </column>
+      <column name="LAST_NAME" type="varchar(60)">
+        <constraints nullable="true"></constraints>
+      </column>
+      <column name="USERNAME" type="varchar(60)">
+        <constraints nullable="false"></constraints>
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet dbms="h2" id="2" author="abaloghbiro">
+    <insert tableName="CLIENT">
+      <column name="FIRST_NAME" value="Attila"/>
+      <column name="LAST_NAME" value="Balogh-Biro"/>
+      <column name="USERNAME" value="abaloghbiro"/>
+    </insert>
+  </changeSet>
+  <changeSet dbms="h2" id="3" author="abaloghbiro">
+    <addColumn tableName="CLIENT">
+      <column name="EMAIL" type="varchar(100)">
+        <constraints nullable="true"></constraints>
+      </column>
+    </addColumn>
+  </changeSet>
+  <changeSet dbms="h2" id="4" author="abaloghbiro">
+    <update tableName="CLIENT">
+      <column name="EMAIL" value="abaloghbiro@gmail.com"></column>
+      <where>USERNAME = 'abaloghbiro'</where>
+    </update>
+  </changeSet>
+</databaseChangeLog>
